@@ -10,6 +10,58 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>test-thrift</module>
+        <module>test-jdo</module>
+        <module>test-redis</module>
+        <module>test-java</module>
+        <module>test-hive</module>
     </modules>
 
+    <properties>
+        <!-- Build Properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Plugin and Plugin Dependency Versions -->
+        <datanucleus.maven.plugin.version>3.3.0-release</datanucleus.maven.plugin.version>
+
+        <!-- Library Dependency Versions -->
+        <datanucleus-api-jdo.version>4.2.1</datanucleus-api-jdo.version>
+        <datanucleus-core.version>4.1.6</datanucleus-core.version>
+        <datanucleus-rdbms.version>4.1.7</datanucleus-rdbms.version>
+        <datanucleus-jdo.version>3.2.0-m3</datanucleus-jdo.version>
+        <jdo-api.version>3.0.1</jdo-api.version>
+        <mysql-connector.version>5.1.38</mysql-connector.version>
+        <springframework.version>4.3.0.RELEASE</springframework.version>
+    </properties>
+
+    <repositories>
+    <!-- This needs to be removed before checking in-->
+    <repository>
+        <id>datanucleus</id>
+        <name>datanucleus maven repository</name>
+        <url>http://www.datanucleus.org/downloads/maven2</url>
+        <layout>default</layout>
+        <releases>
+            <enabled>true</enabled>
+            <checksumPolicy>warn</checksumPolicy>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+    </repositories>
+    <dependencies>
+        <!-- test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
