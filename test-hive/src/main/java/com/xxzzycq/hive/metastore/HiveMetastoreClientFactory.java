@@ -46,7 +46,7 @@ public class HiveMetastoreClientFactory {
         TSocket transport1 = new TSocket(host, port, timeoutMillis);
         TTransport transport;
         if (kdcAuthEnabled) {
-            TTransport authenticatedTransport = createAuthenticatedTransport(transport1, "hive/_HOST@HADOOP.JD", host, ugi);
+            TTransport authenticatedTransport = createAuthenticatedTransport(transport1, "hive/_HOST@HADOOP.XX", host, ugi);
             transport = new TTransportWrapper(authenticatedTransport, host);
         } else {
             transport = new TTransportWrapper(transport1, host);
