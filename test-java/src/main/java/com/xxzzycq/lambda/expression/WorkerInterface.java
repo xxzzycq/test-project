@@ -5,6 +5,5 @@ package com.xxzzycq.lambda.expression;
  */
 @FunctionalInterface
 public interface WorkerInterface {
-
     void doSomeWork();
 }

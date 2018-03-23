@@ -3,10 +3,10 @@ package com.xxzzycq.lambda.expression;
 import com.xxzzycq.model.Person;
 import com.xxzzycq.model.Sex;
 
-import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -16,6 +16,9 @@ import java.util.List;
  * 这一点跟Java是强类型语言吻合，也就是说你并不能在代码的任何地方任性的写Lambda表达式。
  * 实际上Lambda的类型就是对应函数接口的类型。
  * Lambda表达式另一个依据是类型推断机制，在上下文信息足够的情况下，编译器可以推断出参数表的类型，而不需要显式指名。
+ *
+ * http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-final.html
+ * https://github.com/CarpenterLee/JavaLambdaInternals/blob/master/2-Lambda%20and%20Anonymous%20Classes(II).md
  *
  */
 public class AnonymousInnerClassesExample {
@@ -29,7 +32,6 @@ public class AnonymousInnerClassesExample {
 
         // 一个参数的匿名类
         ActionListener listener = event -> System.out.println("button clicked");
-        new Button().addActionListener(listener);
 
         // 两个参数的匿名类
         Person p1 = new Person(1, "zhangsan", Sex.MALE, "北京", "110");
@@ -44,6 +46,12 @@ public class AnonymousInnerClassesExample {
                 return -1;
             }
         });
+//        Collections.sort(people, (person1, person2) -> person1.getName().compareTo(person2.getName()));
+//        Collections.sort(people, Comparator.comparing(p -> p.getName()));
+//        Collections.sort(people, Comparator.comparing(Person::getName));
+//        people.sort(Comparator.comparing(person -> person.getName()));
+        people.sort(Comparator.comparing(Person::getName).reversed());
+
         people.stream().map(Person::getName).forEach(System.out::println);
         people.stream().map(person -> person.getClass().getClassLoader()).forEach(System.out::println);
         people.parallelStream().map(Person::getId).map(i -> i + 0).filter(i -> i < 10).forEach(id -> System.out.println(id));
