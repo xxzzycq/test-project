@@ -10,8 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>test-thrift</module>
-        <module>test-jdo</module>
-        <module>test-redis</module>
         <module>test-java</module>
         <module>test-hive</module>
     </modules>
