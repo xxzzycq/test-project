@@ -100,7 +100,7 @@ public class LambdaWithCollectionExample {
                 return s;
             }
         });
-        list2.forEach(System.out::println);
+        list2.stream().forEach(System.out::println);
         // 使用Lambda表达式实现
         List<String> list3 = new ArrayList<>(Arrays.asList("zhangsan", "lisi", "wangwu", "zhangliu", "xiaoming"));
         list3.replaceAll(str -> {
