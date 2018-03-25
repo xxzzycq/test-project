@@ -10,6 +10,8 @@ public class Person {
     private String address;
     private String mobile;
 
+    public Person() {}
+
     public Person(int id, String name, Enum<Sex> sex, String address, String mobile) {
         this.id = id;
         this.name = name;
@@ -56,5 +58,10 @@ public class Person {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    @Override
+    public String toString() {
+        return "id = " + id;
     }
 }

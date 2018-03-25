@@ -5,7 +5,9 @@ package com.xxzzycq.thread;
  */
 public class RunnableDemo {
     public static void main(String[] args) {
-        Runnable task = () -> System.out.println("hello world");
-        new Thread(task).start();
+        ExecuteThreadService executeThreadService = new ExecuteThreadServiceImpl();
+        Runnable task = () -> System.out.println("runnable is starting");
+//        new Thread(task).start();
+        executeThreadService.executeThread(task);
     }
 }
