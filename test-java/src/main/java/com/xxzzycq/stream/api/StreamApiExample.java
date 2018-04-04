@@ -29,7 +29,7 @@ public class StreamApiExample {
     }
 
 
-    // test filter and foreach
+    //TODO test filter and foreach
     public static void testFilter() {
         Stream<String> stream = Stream.of("I", "love", "you", "too");
         stream.filter(s -> s.length() > 3).forEach(System.out::println);
@@ -57,7 +57,7 @@ public class StreamApiExample {
         stream3.flatMap(list -> list.stream().map(x -> x + 100)).forEach(num -> System.out.println(num));
     }
 
-    // sorted and distinct
+    //TODO sorted and distinct
     public static void testSortAndDistinct() {
         Stream<String> stream4 = Stream.of("I", "love", "you", "too");
         stream4.distinct().sorted((str1, str2) -> str1.compareTo(str2)).forEach(System.out::println);
@@ -125,8 +125,8 @@ public class StreamApiExample {
         // test join
         Stream<String> stream4 = Stream.of("I", "love", "you", "too");
 //        String joined = stream4.collect(Collectors.joining());
-//        String joined = stream4.collect(Collectors.joining(","));
-        String joined = stream4.collect(Collectors.joining(",", "", "."));
+        String joined = stream4.collect(Collectors.joining(","));
+//        String joined = stream4.collect(Collectors.joining(",", "", "."));
         System.out.println(joined);
 
         /**
@@ -146,10 +146,10 @@ public class StreamApiExample {
         Student s6 = new Student(6, "zhangsan", Sex.MALE, 20, "1班");
         List<Student> students = Arrays.asList(s1, s2, s3, s4, s5, s6);
         // 计算每个班级的有哪些人
-//        Map<String, List<String>> byGrage = students.stream().collect(Collectors.groupingBy(Student::getGrade,
-//                                                                          Collectors.mapping(s -> s.getName(), // 下游收集器
-//                                                                              Collectors.toList()))); // 更下游收集器
-//        byGrage.forEach((k, v) -> System.out.println(k + "=" + v));
+        Map<String, List<String>> byGrage = students.stream().collect(Collectors.groupingBy(Student::getGrade,
+                                                                          Collectors.mapping(s -> s.getName(), // 下游收集器
+                                                                              Collectors.toList()))); // 更下游收集器
+        byGrage.forEach((k, v) -> System.out.println(k + "=" + v));
         //
 //        Map<Sex, List<Student>> bySex = students.stream().collect(Collectors.groupingBy(s -> s.getSex()));
 //        bySex.forEach((k, v) -> System.out.println(k + "=" + v));
