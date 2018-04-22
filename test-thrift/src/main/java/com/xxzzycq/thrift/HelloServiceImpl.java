@@ -13,6 +13,11 @@ public class HelloServiceImpl implements HelloService.Iface {
     @Override
     public int sayInt(int param) throws TException {
         System.out.println("call say int...");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return param;
     }
 

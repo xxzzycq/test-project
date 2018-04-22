@@ -12,6 +12,10 @@ import org.apache.thrift.transport.TTransportException;
  * Created by yangchangqi on 2018/4/22.
  */
 public class HelloServiceClient {
+    /**
+     * 调用HelloServiceServer的服务
+     * @param args
+     */
     public static void main(String[] args) {
         try {
             // 设置调用的服务地址为本地，端口为 7911
@@ -30,6 +34,7 @@ public class HelloServiceClient {
             String str = client.sayString("Hello World");
             System.out.println(str);
             client.sayVoid();
+            transport.close();
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {
